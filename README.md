@@ -23,9 +23,8 @@ This online class teaches how to solve common data engineering tasks:
 
 #### Data Modeling 
 - [TODO Link to summary of content](Link to summary)
-- [Relational Data Models Project](https://github.com/BarbaraJoebstl/data-engineering-nd/tree/master/data-modeling/project-data-modeling-with-postgress)
-
-- NoSQL Data Models
+- [Relational Data Modeling Project](https://github.com/BarbaraJoebstl/data-engineering-nd/tree/master/data-modeling/project-data-modeling-with-postgress)
+- [NoSQL Data Modeling Project](https://github.com/BarbaraJoebstl/data-engineering-nd/tree/master/data-modeling/project-apache-cassandra)
 
 
 #### Cloud Data Warehouses
