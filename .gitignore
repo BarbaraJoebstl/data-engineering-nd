@@ -1,6 +1,8 @@
 # project data for the exercises
 data/*
 
+dwh.cfg
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
