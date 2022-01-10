@@ -3,7 +3,6 @@ from datetime import datetime
 import os
 from pyspark.sql import SparkSession, udf
 from pyspark.sql import functions as F
-import logging
 
 
 def get_profile_credentials_for_udacity_sandbox():
@@ -31,14 +30,14 @@ def get_aws_credentials(user_name):
         aws_access_key_id = config.get(user_name, 'aws_access_key_id')
         aws_secret_access_key = config.get(user_name, 'aws_secret_access_key')
     except ParsingError:
-        logging.error('Error parsing the config file for {}.'.format(user_name))
+        print('Error parsing the config file for {}.'.format(user_name))
         raise
     except(NoSectionError, NoOptionError):
         try:
             aws_access_key_id = config.get('default', 'aws_access_key_id')
             aws_secret_access_key = config.get('default', 'aws_secret_access_key')
         except (NoSectionError, NoOptionError):
-            logging.error('Unable to find default AWS credentials')
+            print('Unable to find default AWS credentials')
             raise
     return aws_access_key_id, aws_secret_access_key
 
@@ -69,14 +68,14 @@ def process_song_data(spark, input_data, output_data):
     
     # read song data file
     df = spark.read.json(song_data)
-    logging.info('---reading song data from s3')
+    print('---reading song data from s3')
 
     # extract columns to create songs table
     songs_table = df.select('song_id', 'title', 'artist_id', 'year', 'duration')
     
     # write songs table to parquet files partitioned by year and artist
     songs_table.write.parquet(f'{output_data}/songs_table', mode='overwrite', partitiionBy=['year', 'artist_id'])
-    logging.info('---write songs_table to parquet file on {}'.format(output_data))
+    print('---write songs_table to parquet file on {}'.format(output_data))
 
 
     # extract columns to create artists table
@@ -84,7 +83,7 @@ def process_song_data(spark, input_data, output_data):
     
     # write artists table to parquet files
     artists_table.write.parquet(f'{output_data}/artists_table', mode='overwrite')
-    logging.info('---write artist_table to parquet file on {}'.format(output_data))
+    print('---write artist_table to parquet file on {}'.format(output_data))
 
 
 def process_log_data(spark, input_data, output_data):
@@ -101,7 +100,7 @@ def process_log_data(spark, input_data, output_data):
 
     # read log data file
     df = spark.read.json(log_data)
-    logging.info('---reading song data from s3')
+    print('---reading song data from s3')
 
     # filter by actions for song plays
     df = df.filter(df['page']== 'NextSong')
@@ -111,7 +110,7 @@ def process_log_data(spark, input_data, output_data):
     
     # write users table to parquet files
     users_table.writeparquet(f'{output_data}/users_table', mode='overwrite')
-    logging.info('---write users_table to parquet file on {}'.format(output_data))
+    print('---write users_table to parquet file on {}'.format(output_data))
 
     # timetable with DF
     # 
@@ -146,12 +145,12 @@ def process_log_data(spark, input_data, output_data):
     
     # write time table to parquet files partitioned by year and month
     time_data.write.parquet('f{output_data}/time_table', mode='overwrite', partitionBy=['year', 'month'])
-    logging.info('---write time_table to parquet file on {}'.format(output_data))
+    print('---write time_table to parquet file on {}'.format(output_data))
 
     # read in song data to use for songplays table
     song_data = f'{input_data}/song_data/*/*/*/*.json'
     song_data = spark.read.json(song_data)
-    logging.info('---reading song data')
+    print('---reading song data')
 
     # create temporary views on the table -  in memory, no writing
     song_data.createOrReplaceTempView('song_data')
@@ -180,7 +179,7 @@ def process_log_data(spark, input_data, output_data):
 
     # write songplays table to parquet files partitioned by year and month
     songplays_table.write.parquet(f'{output_data}/songplays_table', mode='overwrite', partition=['year', 'month'])
-    logging.info('---write songplays to parquet file on {}'.format(output_data))
+    print('---write songplays to parquet file on {}'.format(output_data))
 
 
 def main():
