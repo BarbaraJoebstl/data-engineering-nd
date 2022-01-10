@@ -35,12 +35,14 @@ This online class teaches how to solve common data engineering tasks:
  - [Redshift Basics](https://dev.to/barbara/redshift-2l6h)
  - [Data Warehouse Project](https://github.com/BarbaraJoebstl/data-engineering-nd/tree/master/data-warehouse/project-datawarehouse)
 
+
 #### Data Lakes with Spark
  - [Spark Basics](https://dev.to/barbara/spark-for-beginners-and-you-24ea)
  - [Run Spark locally with Docker](https://dev.to/barbara/run-spark-locally-with-docker-4com)
  - // tODO Summary Data lakes
  - [Data Lakes Project](https://github.com/BarbaraJoebstl/data-engineering-nd/tree/master/data-lakes/project-data-lakes)
- - 
+
+
 #### Data Pipelines with Airflow
  // TODO 
 
