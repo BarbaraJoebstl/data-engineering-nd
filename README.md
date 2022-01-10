@@ -22,17 +22,25 @@ This online class teaches how to solve common data engineering tasks:
 ### Chapters
 
 #### Data Modeling 
-- [TODO Link to summary of content](Link to summary)
+- [Summary Relational Data Modeling](https://dev.to/barbara/relational-data-models-43a4)
 - [Relational Data Modeling Project](https://github.com/BarbaraJoebstl/data-engineering-nd/tree/master/data-modeling/project-data-modeling-with-postgress)
+- [Summary NoSQL Data Modeling](https://dev.to/barbara/non-relational-data-models-39cg)
 - [NoSQL Data Modeling Project](https://github.com/BarbaraJoebstl/data-engineering-nd/tree/master/data-modeling/project-apache-cassandra)
 
 
 #### Cloud Data Warehouses
- // TODO 
+ - [What is a Data Warehouse](https://dev.to/barbara/what-is-a-data-warehouse-4lej)
+ - [Data Warehouse Architectures](https://dev.to/barbara/cloud-data-warehouse-architectures-7kj)
+ - [Olap Cubes](https://dev.to/barbara/olap-cubes-2kbd)
+ - [Redshift Basics](https://dev.to/barbara/redshift-2l6h)
+ - [Data Warehouse Project](https://github.com/BarbaraJoebstl/data-engineering-nd/tree/master/data-warehouse/project-datawarehouse)
 
 #### Data Lakes with Spark
- // TODO 
-
+ - [Spark Basics](https://dev.to/barbara/spark-for-beginners-and-you-24ea)
+ - [Run Spark locally with Docker](https://dev.to/barbara/run-spark-locally-with-docker-4com)
+ - // tODO Summary Data lakes
+ - [Data Lakes Project](https://github.com/BarbaraJoebstl/data-engineering-nd/tree/master/data-lakes/project-data-lakes)
+ - 
 #### Data Pipelines with Airflow
  // TODO 
 
