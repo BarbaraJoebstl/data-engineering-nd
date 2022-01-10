@@ -57,11 +57,13 @@ start container: `docker-compose up`, if you changed something in the config mak
   -- Verify connection to the Master node: EC2 -> Instances -> your master node -> Connect to instance [Help](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-connect-master-node-ssh.html)
 
 ## ETL Pipeline
-### A: Data Exploration and testing `local_setup\data\assignment_data_lakes.ipynb`. You cann see the data schema, how to transform the data to tables and how to write them to parquet files.
+### A: Data Exploration and testing 
+See `local_setup\data\assignment_data_lakes.ipynb`. You cann see the data schema, how to transform the data to tables and how to write them to parquet files.
 
 #### Load Data
 - Load the data from S3 with spark.read.json() and have a look at the schemas.
-// TODO Load image
+![schema_initial](https://user-images.githubusercontent.com/6280553/148812051-71646a04-6edb-43ba-ac2d-73acaa14d8e7.png)
+
 
 #### Table schemas for analysis
 ## TODO add image
