@@ -66,7 +66,8 @@ See `local_setup\data\assignment_data_lakes.ipynb`. You cann see the data schema
 
 
 #### Table schemas for analysis
-## TODO add image
+![schema](https://user-images.githubusercontent.com/6280553/148812186-9088e881-19c9-429e-bdd3-4310652b3b0d.png)
+
 
 
 ### B: `etl.py`
@@ -75,7 +76,6 @@ In the etl.py you can find the code from the notebook, refactored as a script. T
 
 ## Additional Info
 
- 
 - [Docstrings](https://www.python.org/dev/peps/pep-0257/)
 - [Why PEP8](https://realpython.com/python-pep8/)
 - [PEP 8 Styleguide](http://pep8online.com/)
@@ -96,7 +96,6 @@ HDFS has usually been installed in on-premise systems, and traditionally have ha
 Since AWS S3 is a binary object store, it can store all kinds of format, even images and videos. HDFS will strictly require a certain file format - the popular choices are avro and parquet, which have relatively high compression rate and which makes it useful to store large dataset.
 
 ### Parquet
-
 https://www.upsolver.com/blog/apache-parquet-why-use
 
 
