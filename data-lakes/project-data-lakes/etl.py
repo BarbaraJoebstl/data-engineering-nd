@@ -112,36 +112,37 @@ def process_log_data(spark, input_data, output_data):
     users_table.writeparquet(f'{output_data}/users_table', mode='overwrite')
     print('---write users_table to parquet file on {}'.format(output_data))
 
-    # timetable with DF
-    # 
-    # time_table = df.withColumn('start_time', F.from_unixtime(F.col('ts')/1000))
-    # time_table = time_table.select('ts', 'start_time') \
-    #         .withColumn('year', F.year('start_time')) \
-    #         .withColumn('month', F.month('start_time')) \
-    #         .withColumn('week', F.weekofyear('start_time')) \
-    #         .withColumn('weekday', F.dayofweek('start_time')) \
-    #         .withColumn('day', F.dayofyear('start_time')) \
-    #         .withColumn('hour', F.hour('start_time')) \
+    # time_data with df
+    #  
+    time_data = df.withColumn('start_time', F.from_unixtime(F.col('ts')/1000))
+    time_data = time_data.select('ts', 'start_time') \
+             .withColumn('year', F.year('start_time')) \
+             .withColumn('month', F.month('start_time')) \
+             .withColumn('week', F.weekofyear('start_time')) \
+             .withColumn('weekday', F.dayofweek('start_time')) \
+             .withColumn('day', F.dayofyear('start_time')) \
+             .withColumn('hour', F.hour('start_time')) \
 
+    # with udfs and sql             
     # create start_time column from original timestamp column with a user defined function
-    get_timestamp = udf(lambda timestamp: str(int(int(timestamp) / 1000)))
-    # or spark.udf.register('get_timestamp', lambda timestamp: str(int(int(timestamp) / 1000))
-    df = df.withColumn('start_time', get_timestamp(df['ts']))
+    # get_timestamp = udf(lambda timestamp: str(int(int(timestamp) / 1000)))
+    # # or spark.udf.register('get_timestamp', lambda timestamp: str(int(int(timestamp) / 1000))
+    # df = df.withColumn('start_time', get_timestamp(df['ts']))
     
-    # create datetime column from original timestamp column
-    get_datetime = udf(lambda timestamp: str(datetime.fromtimestamp(int(timestamp) / 1000 )))
-    df = df.withColumn('datetime', get_datetime(df['ts']))
+    # # create datetime column from original timestamp column
+    # get_datetime = udf(lambda timestamp: str(datetime.fromtimestamp(int(timestamp) / 1000 )))
+    # df = df.withColumn('datetime', get_datetime(df['ts']))
     
-    #variant SQL
-    time_data = spark.sql("""
-       SELECT DISTINCT 
-           datetime as start_time,
-           hour(datetime) AS hour,
-           day(datetime) AS day,
-           weekofyear(datetime) AS week,
-           month(datetime) AS month,
-           year(datetime) AS weekday
-       FROM ts""")
+    # #variant SQL
+    # time_data = spark.sql("""
+    #    SELECT DISTINCT 
+    #        datetime as start_time,
+    #        hour(datetime) AS hour,
+    #        day(datetime) AS day,
+    #        weekofyear(datetime) AS week,
+    #        month(datetime) AS month,
+    #        year(datetime) AS weekday
+    #    FROM ts""")
     
     # write time table to parquet files partitioned by year and month
     time_data.write.parquet('f{output_data}/time_table', mode='overwrite', partitionBy=['year', 'month'])

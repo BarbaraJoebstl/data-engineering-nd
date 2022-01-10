@@ -62,7 +62,9 @@ See `local_setup\data\assignment_data_lakes.ipynb`. You cann see the data schema
 
 #### Load Data
 - Load the data from S3 with spark.read.json() and have a look at the schemas.
-![schema_initial](https://user-images.githubusercontent.com/6280553/148812051-71646a04-6edb-43ba-ac2d-73acaa14d8e7.png)
+
+![song data](https://user-images.githubusercontent.com/6280553/108597445-f9452b00-7380-11eb-888f-06513ea5be98.png)
+![log data](https://user-images.githubusercontent.com/6280553/148812051-71646a04-6edb-43ba-ac2d-73acaa14d8e7.png)
 
 
 #### Table schemas for analysis
