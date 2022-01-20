@@ -9,21 +9,24 @@ import datetime
 
 from airflow import DAG
 from airflow.operators.postgres_operator import PostgresOperator
+# is calling a python factory functions, to return a DAG
 from airflow.operators.subdag_operator import SubDagOperator
 from airflow.operators.udacity_plugin import HasRowsOperator
 
-from lesson3.exercise3.subdag import get_s3_to_redshift_dag
+from subdag import get_s3_to_redshift_dag
 import sql_statements
 
 
 start_date = datetime.datetime.utcnow()
 
+# dag =  DAG(f"{parent_dag_name}.{task_id}", **kwargs)
 dag = DAG(
     "lesson3.exercise3",
     start_date=start_date,
 )
 
 trips_task_id = "trips_subdag"
+
 trips_subdag_task = SubDagOperator(
     subdag=get_s3_to_redshift_dag(
         "lesson3.exercise3",
