@@ -1,0 +1,3 @@
+apache-airflow
+boto3
+psycopg2
