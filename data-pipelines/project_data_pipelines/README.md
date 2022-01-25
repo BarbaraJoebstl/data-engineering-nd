@@ -22,7 +22,6 @@ Log data: s3://udacity-dend/log_data
 Song data: s3://udacity-dend/song_data
 
 ## Overview
-
 This assignment displays core concepts of Apache Airflow.
 create your own custom operators to perform tasks:
 
@@ -37,8 +36,7 @@ The project template package contains three major components for the project:
 - A helper class for the SQL transformations including a helpers class for the SQL transformations.
 
 ## Prerequisites
-
-1. Create a Redshift Cluster if you like [progamatically](https://github.com/BarbaraJoebstl/DEND/blob/main/data_warehouse/L3%20Excercise%202%20-%20AWS%20SDK)
+1. Create a Redshift Cluster if you like [progamatically](https://github.com/BarbaraJoebstl/data-engineering-nd/blob/master/data-warehouse/lesson3-cloud-computing/IaC_Redshift.ipynb)
 2. Install Apache Airflow and Boto (you can run `pip install requirements.txt`)
 3. When Airflow is running add connections in the Airflow Web UI (Admin -> Connections):
    Conn Id: `aws_credentials`.
@@ -56,19 +54,16 @@ The project template package contains three major components for the project:
    !: Delete the cluster eacht time you are finiseh working.
 
 ## Building the operators
-
-
+In order to complete the project, there are four operators to be implemented
 
 ### Stage Operator
-
 - Load JSON fromatted files from S3 to Amazon Redshift (SQL Copy)
 - contains timestamp
 - runs backfills
 
 ### Fact and Dimension Operator
-
-- uses the SQL helper class to run the data transformations
+- uses the provided SQL helper class to run the data transformations
 
 ### Data Quality Operator
-
 - runs checks on the data
+

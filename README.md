@@ -39,12 +39,12 @@ This online class teaches how to solve common data engineering tasks:
 #### Data Lakes with Spark
  - [Spark Basics](https://dev.to/barbara/spark-for-beginners-and-you-24ea)
  - [Run Spark locally with Docker](https://dev.to/barbara/run-spark-locally-with-docker-4com)
- - // tODO Summary Data lakes
- - [Data Lakes Project](https://github.com/BarbaraJoebstl/data-engineering-nd/tree/master/data-lakes/project-data-lakes)
+ - [Data Lake explained](https://dev.to/barbara/data-lake-explained-3cel)
+ - [Data Lake Project](https://github.com/BarbaraJoebstl/data-engineering-nd/tree/master/data-lakes/project-data-lakes)
 
 
 #### Data Pipelines with Airflow
- // TODO 
+- [Data Pipelines explained with Airflow](https://dev.to/barbara/data-pipelines-explained-with-airflow-6e7)
+- [Data Pipelines Project](https://github.com/BarbaraJoebstl/data-engineering-nd/tree/master/data-pipelines/project_data_pipelines)
 
 #### Capstone Project
- // TODO
