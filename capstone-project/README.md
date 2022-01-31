@@ -1,71 +1,61 @@
 Data Engineering Capstone Project
 
 
-This project will show how to build a datawarehouse for the given datasets and provide BI apps with that data.
+This project will show how to build a datawarehouse to provide BI apps with that data.
 
+As one of the acceptance criteria for this project is to handle at least 1 million rows and two different data sources and file formats, we will use the data sources are provided by Udacity. 
 
+The main dataset includes data about _Immigration in the United States of America_ from [here](https://www.trade.gov/national-travel-and-tourism-office).
+Supplementary datasets provided are:
+- U.S. city _demographics_ from [here](https://public.opendatasoft.com/explore/dataset/us-cities-demographics/export/)
+- _Temperature_ data from [here](https://www.trade.gov/national-travel-and-tourism-office)
+- Data on _airport codes_ from [here](https://datahub.io/core/airport-codes#data)
 
+## Steps of the project
+### Step 1: Scope the Project and Gather Data
 
+We will use the provided datasets by udacity, to create a source-of-truth database that can be used for queries and as data source for BI apps.
 
-
-Overview
-The purpose of the data engineering capstone project is to give you a chance to combine what you've learned throughout the program. This project will be an important part of your portfolio that will help you achieve your data engineering-related career goals.
-
-In this project, you can choose to complete the project provided for you, or define the scope and data for a project of your own design. Either way, you'll be expected to go through the same steps outlined below.
-
-Udacity Provided Project
-In the Udacity provided project, you'll work with four datasets to complete the project. The main dataset will include data on immigration to the United States, and supplementary datasets will include data on airport codes, U.S. city demographics, and temperature data. You're also welcome to enrich the project with additional data if you'd like to set your project apart.
-
-Open-Ended Project
-If you decide to design your own project, you can find useful information in the Project Resources section. Rather than go through steps below with the data Udacity provides, you'll gather your own data, and go through the same process.
-
-Instructions
-To help guide your project, we've broken it down into a series of steps.
-
-Step 1: Scope the Project and Gather Data
-Since the scope of the project will be highly dependent on the data, these two things happen simultaneously. In this step, you’ll:
-
-Identify and gather the data you'll be using for your project (at least two sources and more than 1 million rows). See Project Resources for ideas of what data you can use.
-Explain what end use cases you'd like to prepare the data for (e.g., analytics table, app back-end, source-of-truth database, etc.)
-Step 2: Explore and Assess the Data
+### Step 2: Explore and Assess the Data
 Explore the data to identify data quality issues, like missing values, duplicate data, etc.
-Document steps necessary to clean the data
-Step 3: Define the Data Model
+Document steps necessary to clean the data. The data exploration can be found in `data/exploration.ipynb` notebook.
+
+#### Run locally 
+For prototyping an testing it's nice to run Spark locally in a Docker container. Everything you need you'll find in the `local_setup` folder.
+We use a build based on the docker image "jupyter/pyspark-notebook".
+Custom additions:
+- libraries needed, as written in the requirements.txt
+- jupyter config, so that we don't need a token for the notebook
+- store your env variables in a `.env` file to access them
+- the notebook is saved to the `data` folder
+
+start container: `docker-compose up`, if you changed something in the config make sure to use `docker-compose up --force-recreate --build` to make sure changes are build
+
+
+### Step 3: Explore the Data Model 
 Map out the conceptual data model and explain why you chose that model
 List the steps necessary to pipeline the data into the chosen data model
-Step 4: Run ETL to Model the Data
+
+### Step 4: Run ETL to Model the Data
 Create the data pipelines and the data model
-Include a data dictionary
-Run data quality checks to ensure the pipeline ran as expected
-Integrity constraints on the relational database (e.g., unique key, data type, etc.)
-Unit tests for the scripts to ensure they are doing the right thing
-Source/count checks to ensure completeness
-Step 5: Complete Project Write Up
+- TODO: include a data dictionary
+
+### Step 5: Complete Project write up
 What's the goal? What queries will you want to run? How would Spark or Airflow be incorporated? Why did you choose the model you chose?
 Clearly state the rationale for the choice of tools and technologies for the project.
 Document the steps of the process.
 Propose how often the data should be updated and why.
 Post your write-up and final data model in a GitHub repo.
+
+
+### Additional questions:
+
 Include a description of how you would approach the problem differently under the following scenarios:
-If the data was increased by 100x.
-If the pipelines were run on a daily basis by 7am.
-If the database needed to be accessed by 100+ people.
+#### 1. If the data was increased by 100x.
 
 
-
-### Step1 - Scope and gather data
-
-Requirements: at least 2 data sources with 1 million rows
-
-- instagram story of one year with #mercedes-benz
--- how many rows?
--- counts per day
-
-- grand prix data of one year
--- list race days
--- mercedes amg won: true/false
+#### 2. If the pipelines were run on a daily basis by 7am.
 
 
+#### 3. If the database needed to be accessed by 100+ people.
 
-
-use case. provide data for an anlytics table
