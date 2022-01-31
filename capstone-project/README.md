@@ -1,4 +1,13 @@
 Data Engineering Capstone Project
+
+
+This project will show how to build a datawarehouse for the given datasets and provide BI apps with that data.
+
+
+
+
+
+
 Overview
 The purpose of the data engineering capstone project is to give you a chance to combine what you've learned throughout the program. This project will be an important part of your portfolio that will help you achieve your data engineering-related career goals.
 
