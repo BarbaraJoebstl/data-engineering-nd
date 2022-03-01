@@ -22,7 +22,7 @@ def process_data(spark):
 
 
 def get_df_immigration(spark):
-    immigration_data = f'{INPUT_DATA_PATH}/sas_data/' # holding the parquet files
+    immigration_data = f'{INPUT_DATA_PATH}/sas_data/part-00000-b9542815-7a8d-45fc-9c67-c9c5007ad0d4-c000.snappy.parquet' # holding the parquet files
 
     # instead of all 28 columns, we only need 10 for the tables we are going to create
     df_immigration = spark.read.parquet(immigration_data)\
@@ -33,13 +33,12 @@ def get_df_immigration(spark):
     # add timestamps, created with udf
     df_immigration = df_immigration.withColumn('arrival_ts', sas_to_timestamp(df_immigration['arrdate']))
     df_immigration = df_immigration.withColumn('departure_ts', sas_to_timestamp(df_immigration['depdate']))
-    print(df_immigration.head(5))
     return df_immigration
 
 
 def create_fact_immigrant(df_immigration):
     # create fact table
-    fact_immigration = df_immigration.select(col('cicid').alias('immigrant_id') , 'arrival_ts', 'departure_ts', 'i94cit', 'i94res', col('i94port').alias('city_code'), 'fltno').dropDuplicates()
+    fact_immigration = df_immigration.select('cicid', 'arrival_ts', 'departure_ts', 'i94cit', 'i94res', 'i94port', 'fltno').dropDuplicates()
         
     #test data
     check_number_of_rows(fact_immigration)
@@ -69,8 +68,8 @@ def create_dim_date(df_immigration):
                 .withColumn('day', F.dayofyear('ts')) \
                 .withColumn('hour', F.hour('ts'))
     
-    dim_time.printSchema()
-    dim_time.head(10)
+    #dim_time.printSchema()
+    #dim_time.head(10)
     #test data
     check_number_of_rows(dim_time)
     check_number_of_columns(dim_time, 8)
@@ -105,7 +104,7 @@ def create_dim_city(spark):
 
     #test data
     check_number_of_rows(dim_city)
-    check_number_of_columns(dim_city, 8)
+    check_number_of_columns(dim_city, 9)
     print('Success: city dimension data validation')
 
 
